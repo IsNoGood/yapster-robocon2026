@@ -59,14 +59,18 @@ Instructor slides are in [INSTRUCTOR-RUNSHEET.md](./INSTRUCTOR-RUNSHEET.md).
 ./run-tests.sh
 ```
 
-### 4) Start services (separate terminals)
+### 4) Start services
 
 ```bash
-cd backend && npm run dev
+./manage-services.sh start
+./manage-services.sh status
 ```
 
-```bash
-cd frontend && npm run dev
+Windows PowerShell:
+
+```powershell
+.\manage-services.ps1 start
+.\manage-services.ps1 status
 ```
 
 ### 5) Health checks
@@ -94,15 +98,16 @@ Recommended implementation loop:
 ## Repository Structure
 
 ```text
-yapster-rf/
+yapster-robocon2026/
 ├── frontend/                  # React + TypeScript (Vite)
 ├── backend/                   # Express + TypeScript
 ├── atests/                    # Robot Framework tests
+├── manage-services.sh         # Service manager (Linux/macOS)
+├── manage-services.ps1        # Service manager (Windows)
 ├── INSTRUCTOR-RUNSHEET.md     # Marp slides for workshop
 ├── DEMO-GUIDE.md              # Facilitator guide (2-hour tutorial)
 └── README.md
 ```
-
 
 ## Additional Docs
 
