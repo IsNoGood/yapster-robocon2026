@@ -1,0 +1,24 @@
+{
+  "name": "yapster",
+  "version": "1.0.0",
+  "description": "Local-first Robot Framework workshop for AI agentic coding",
+  "scripts": {
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "dev": "echo 'Use: npm run dev:frontend (in one terminal) && npm run dev:backend (in another terminal)'",
+    "dev:all": "npm run dev",
+    "test": "robot --outputdir results atests/",
+    "test:robot": "./run-tests.sh",
+    "test:smoke": "robot --include smoke --outputdir atests/results atests/",
+    "test:ui": "robot --include ui --outputdir atests/results atests/",
+    "test:api": "robot --include api --outputdir atests/results atests/",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build"
+  },
+  "devDependencies": {},
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
+}

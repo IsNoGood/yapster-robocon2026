@@ -1,0 +1,8 @@
+# Minimum required versions for Yapster training environment
+# Format: tool=version
+node=22.0.0
+npm=9.0.0
+python=3.8.0
+git=2.30.0
+robot=6.0.0
+browser=13.0.0

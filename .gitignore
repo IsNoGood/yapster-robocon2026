@@ -1,0 +1,89 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python virtual environments
+.venv/
+atests/.venv/
+venv/
+env/
+ENV/
+.env-python/
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test results (but not source HTML files)
+atests/results/
+*.log
+atests/results/*.xml
+atests/results/*.html
+# Allow source HTML files in project
+!frontend/index.html
+!**/src/**/*.html
+
+# Docker
+.dockerignore
+
+# Azure
+.azure/
+
+# Temporary files
+*.tmp
+*.temp
+/tmp/
+
+# Robot Framework browser traces
+atests/results/browser/
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Generated Marp presentations (exclude from version control)
+runsheet.html
+runsheet.pdf
+runsheet.pptx
+INSTRUCTOR-RUNSHEET.html
+*.html
