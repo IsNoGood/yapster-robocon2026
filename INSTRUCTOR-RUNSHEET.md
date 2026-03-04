@@ -51,7 +51,30 @@ section .title-cursor {
   0%, 45% { opacity: 1; }
   46%, 100% { opacity: 0; }
 }
+
+section.speaker-cover {
+  justify-content: center;
+}
+section.speaker-cover h2 {
+  font-size: 2.6em;
+  margin-bottom: 0.35em;
+}
+section.speaker-cover h3 {
+  font-size: 1.5em;
+  max-width: 40%;
+  line-height: 1.2;
+  color: #dbe8f2;
+}
+
 </style>
+
+<!-- _class: speaker-cover -->
+![bg right:52% contain](./visual_assets/robocon/speaker.jpg)
+
+## Ismo Aro
+
+
+---
 
 <!-- _class: lead -->
 
