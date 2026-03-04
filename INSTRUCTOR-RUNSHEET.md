@@ -1,9 +1,9 @@
 ---
 marp: true
-theme: northcode
+theme: robocon
 paginate: true
 html: true
-footer: 'Northcode Tutorial | Agentic Coding with Robot Framework'
+footer: 'RoboCon 2026 | Agentic Coding with Robot Framework'
 ---
 
 <style>
@@ -145,20 +145,22 @@ Core message: Robot is the contract, AI is the accelerator.
 
 ## Prompting Pattern We Use Today
 
-Use this structure in each request:
+Use this sequence:
 
-1. Context: where and what to change
-2. Goal: business behavior expected
-3. Constraints: style, architecture, no regressions
-4. Validation: tests to update/run
+1. State the functionality we want
+2. Ask AI to create Robot tests first (acceptance criteria)
+3. Developer validates the tests and scenarios
+4. Ask AI to implement code to satisfy the approved tests
+5. Re-run tests and review output
 
 Example:
 
 ```text
-Implement Like button for existing messages.
-Add API + UI + tests.
-Keep existing behavior unchanged.
-Run Robot tests and summarize failures if any.
+Implement like functionality for messages.
+First create Robot Framework tests only.
+These tests define acceptance criteria.
+Do not implement code yet.
+After I validate the tests, implement backend and frontend to pass them.
 ```
 
 ---
@@ -166,8 +168,8 @@ Run Robot tests and summarize failures if any.
 ## Clone the Repository
 
 ```bash
-git clone <repo-url>
-cd <repo-name>
+git clone https://github.com/IsNoGood/yapster-robocon2026.git
+cd yapster-robocon2026
 ```
 
 ---
@@ -182,10 +184,14 @@ Run one setup script based on OS:
 ./install-windows-nonadmin.ps1
 ```
 
-Verify environment:
+Verify setup by running tests:
 
 ```bash
-./check-environment.sh
+# macOS / Linux
+./run-tests.sh
+
+# Windows (PowerShell)
+.\run-tests.ps1
 ```
 
 ---
@@ -219,6 +225,26 @@ Stop when done: `./manage-services.sh stop` or `.\manage-services.ps1 stop`
 - `atests/`: Robot Framework UI/API tests
 
 Current core feature: create and list yaps.
+
+---
+
+## Pick Your Agentic Tool
+
+Choose your preferred tool:
+
+- GitHub Copilot
+- Codex
+- Cursor
+- Claude Code
+
+Then ask it to investigate this repository and explain what it is about.
+
+Suggested prompt:
+
+```text
+Investigate this repository and explain what it is about.
+Summarize architecture, current features, and test strategy.
+```
 
 ---
 

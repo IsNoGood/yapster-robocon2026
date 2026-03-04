@@ -1,0 +1,127 @@
+/* @theme robocon */
+@import 'default';
+
+:root {
+  --rb-bg: #0f1724;
+  --rb-text: #f4f7fb;
+  --rb-accent: #11d8c1;
+  --rb-muted: #c2d0de;
+  --rb-overlay: rgba(10, 15, 24, 0.78);
+}
+
+@font-face {
+  font-family: 'Courier Code';
+  src: url('./CourierCode-Roman.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Courier Code';
+  src: url('./CourierCode-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Courier Code';
+  src: url('./CourierCode-Italic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Courier Code';
+  src: url('./CourierCode-BoldItalic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 700;
+}
+
+section {
+  font-family: 'Courier Code', monospace;
+  color: var(--rb-text);
+  background-color: var(--rb-bg);
+  background-image:
+    linear-gradient(var(--rb-overlay), var(--rb-overlay)),
+    url('./visual_assets/robocon/robocon-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 64px 72px;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  right: 30px;
+  width: 88px;
+  height: 88px;
+  background: url('./visual_assets/robocon/robocon-logo.png') no-repeat center / contain;
+  opacity: 0.98;
+  z-index: 10;
+  pointer-events: none;
+}
+
+h1, h2, h3 {
+  font-family: 'Courier Code', monospace;
+  color: var(--rb-text);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+a,
+strong,
+em {
+  color: var(--rb-accent);
+}
+
+ul, ol, p {
+  color: var(--rb-text);
+}
+
+code,
+pre,
+pre code {
+  font-family: 'Courier Code', monospace;
+}
+
+pre {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+  background: rgba(9, 14, 22, 0.7);
+}
+
+header,
+footer {
+  color: var(--rb-muted);
+  font-family: 'Courier Code', monospace;
+}
+
+
+pre,
+pre code,
+pre code span {
+  color: #eaf6ff !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+code:not(pre code) {
+  color: var(--rb-accent);
+  background: rgba(9, 14, 22, 0.5);
+  padding: 0.08em 0.28em;
+  border-radius: 5px;
+}
+
+
+section[data-marpit-pagination]::after {
+  content: attr(data-marpit-pagination);
+  position: absolute;
+  top: 24px;
+  left: 30px;
+  right: auto;
+  bottom: auto;
+  font-size: 18px;
+  color: var(--rb-muted);
+  font-family: 'Courier Code', monospace;
+}

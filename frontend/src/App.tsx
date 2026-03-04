@@ -116,13 +116,13 @@ function App() {
         </div>
       </div>
 
-      {/* NorthCode Footer */}
+      {/* RoboCon Footer */}
       <footer className="App-footer">
         <div className="footer-content">
-          <span className="footer-text">Powered by:</span>
+          <span className="footer-text">RoboCon 2026 Special Edition</span>
           <img 
-            src="/images/N___Horiz_Logo_Mint_RGB.svg" 
-            alt="NorthCode Logo" 
+            src="/images/robocon-logo.png" 
+            alt="RoboCon Logo" 
             className="footer-logo"
           />
         </div>
