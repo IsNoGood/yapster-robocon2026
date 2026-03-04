@@ -14,7 +14,7 @@ User Sees RoboCon Footer With Logo
     [Tags]    business-value    ui    smoke    branding
     Given I am on the Yapster homepage
     When I scroll to the bottom of the page
-    Then I should see "Powered by" in the footer
+    Then I should see "RoboCon 2026 Special Edition" in the footer
     And I should see the RoboCon logo in the footer
 
 User Sees RoboCon Theme Colors
@@ -50,12 +50,12 @@ The page should use RoboCon color palette
 
 The background should use RoboCon dark color
     ${body_style}=    Get Style    body    background-color
-    Should Match Regexp    ${body_style}    rgb\(15, 23, 36\)
+    Should Match Regexp    ${body_style}    rgb\\(15, 23, 36\\)
 
 Accent elements should use RoboCon cyan color
     ${button_exists}=    Run Keyword And Return Status
     ...    Wait For Elements State    button    visible    timeout=1s
     IF    ${button_exists}
         ${button_style}=    Get Style    button    background-color
-        Should Match Regexp    ${button_style}    rgb\(17, 216, 193\)
+        Should Match Regexp    ${button_style}    rgb\\(17, 216, 193\\)
     END
