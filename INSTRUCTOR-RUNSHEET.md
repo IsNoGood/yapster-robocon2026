@@ -28,8 +28,12 @@ section h3 {
   margin-top: 0.3em;
 }
 section ul {
-  margin-top: 0.2em;
-  margin-bottom: 0.2em;
+  margin-top: 0;
+  margin-bottom: 0.55em;
+}
+section p {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 section li {
   margin-bottom: 0.12em;
@@ -86,105 +90,104 @@ section.speaker-cover h3 {
 
 ## Tutorial Goal
 
-By the end of this session participants can:
+Master how to work effectively with coding agents by:
 
-- Explain what AI agentic coding means in software delivery
-- Use Robot Framework as the quality guard rail for AI-generated code
-- Clone and run a fullstack repository locally
-- Collaborate with an AI coding agent to implement a feature
-- Ship a working Like button verified by Robot tests
+1. **Direct development with acceptance tests**
+   - Write Robot Framework tests that define behavior *before* implementation
+   - Use tests as the primary communication channel
+   - Agent validates solutions against explicit requirements
 
----
-
-## Agenda (120 Minutes)
-
-1. 0:00-0:20 Intro: What agentic coding is
-2. 0:20-0:35 Clone and local setup
-3. 0:35-0:50 Baseline walkthrough (app, tests, architecture)
-4. 0:50-1:10 Robot test-first design for Like button
-5. 1:10-1:40 Build Like button with AI agent (guided)
-6. 1:40-1:55 Verify, demo, and discuss test quality
-7. 1:55-2:00 Wrap-up and next steps
+2. **Create agent skill instructions**
+   - Define best practices in your repository so agent learns them once
+   - Example: Robot Framework should use self-documenting keyword names, no docstrings
+   - Agent loads instructions automatically and follows them throughout the project
 
 ---
 
 ## What Is Agentic Coding?
 
-Agentic coding means using an AI assistant as an active collaborator that can:
+Agentic coding is simple: **human prompts, agent does.**
 
-- Explore and understand a codebase
-- Propose and make changes across files
-- Run tests and validate behavior
-- Iterate based on feedback and constraints
+**Your job:**
+- Set clear goals and constraints
+- Write acceptance tests that define requirements
+- Ask agent to explore and implement
+- Validate and iterate based on results
 
-Human role remains critical:
+**The relationship:**
+Better your prompts, tests, guard rails, and documentation → better the result.
+Success depends on how well you set up the context and constraints.
 
-- Set intent and boundaries
-- Review decisions and tradeoffs
-- Approve quality and correctness
-
----
-
-## Agentic Workflow
-
-1. Define goal and acceptance criteria
-2. Ask agent to investigate current state
-3. Implement in small validated increments
-4. Run tests after every meaningful change
-5. Refine prompt and code until done
-
-Rule for this tutorial: no blind copy-paste, always verify.
+**Key principle:** You set the bar; agent tries to reach it.
 
 ---
 
-## Strengths and Risks
+## Why Agentic Coding Is Hard
 
-**Strengths**
-- Faster implementation
-- Better scaffolding and refactoring speed
-- Helps maintain momentum
+Agents work differently than humans.
 
-**Risks**
-- Wrong assumptions if prompts are vague
-- Confident but incorrect solutions
-- Missing edge cases unless tests are explicit
-
-Mitigation: clear prompts + tests + review.
+**Key differences:**
+- Agents need explicit info; humans understand implicitly
+- Agents confuse easily; they don't signal confusion
+- Agents repeat mistakes; context shifts cause regressions
+- Training data is old; agents hallucinate confidently
 
 ---
 
-## Why Robot Framework Here
+## Challenge 1: Context and Confusion
 
-This session is test-first by design:
+**The Problem:**
+- Humans infer context from experience
+- Agents need everything explicit; vague prompts cause wrong results
+- Context window limits (tokens) mean you can't paste everything
+- **Agents are confident even when confused**
 
-- Robot tests define expected behavior before implementation
-- AI can generate code quickly, tests keep it honest
-- Given/When/Then keeps technical and business language aligned
-- UI + API coverage gives confidence across the full stack
-
-Core message: Robot is the contract, AI is the accelerator.
+**This is why we need Part 1:**
+Tests make requirements unambiguous. Agent can't be confused about pass/fail.
 
 ---
 
-## Prompting Pattern We Use Today
+## Challenge 2: Knowledge and Hallucination
 
-Use this sequence:
+**The Problem:**
+- Training data is old; new framework versions aren't known
+- Agents invent APIs, functions, and libraries that don't exist
+- They don't know your project's conventions
 
-1. State the functionality we want
-2. Ask AI to create Robot tests first (acceptance criteria)
-3. Developer validates the tests and scenarios
-4. Ask AI to implement code to satisfy the approved tests
-5. Re-run tests and review output
+**This is why we need Part 2:**
+Skills embed your patterns so agent follows them consistently.
 
-Example:
+---
 
-```text
-Implement like functionality for messages.
-First create Robot Framework tests only.
-These tests define acceptance criteria.
-Do not implement code yet.
-After I validate the tests, implement backend and frontend to pass them.
-```
+## Challenge 3: Consistency and Drift
+
+**The Problem:**
+- Agents repeat mistakes even after being corrected
+- Context shifts cause regressions (correct work gets undone)
+- Pattern drift: ask for 3 things, agent adds a 4th
+
+**This is why we validate after every change:**
+Tests catch regressions immediately.
+
+---
+
+## Foundation: Strict Engineering Practices
+
+Agentic coding works best with disciplined teams that follow engineering fundamentals.
+
+Think **Extreme Programming (XP):**
+- Test-first development
+- Simple design
+- Continuous integration
+- Pair programming mindset (you + agent)
+
+**Essential: Fast feedback loops**
+- Run tests after every meaningful change
+- Catch agent drift immediately
+- Iterate quickly based on results
+
+The stricter your practices and the faster your feedback, the more successful agentic coding becomes.
+Agents amplify good discipline; they expose sloppy practices.
 
 ---
 
@@ -271,6 +274,12 @@ Summarize architecture, current features, and test strategy.
 
 ---
 
+## Part 1: Implement Like Button with Acceptance Tests
+
+We use Robot tests to direct development from start to finish.
+
+---
+
 ## Exercise Goal: Add Like Button
 
 User story:
@@ -341,7 +350,11 @@ Instructor prompt to AI:
 Implement only backend support and let's validate with tests that it works.
 ```
 
-Quick API check with `curl` before UI work.
+Run tests and confirm progress:
+
+```bash
+./run-tests.sh
+```
 
 ---
 
@@ -372,55 +385,38 @@ Manual checks in browser:
 
 ---
 
-## Robot-First Loop (Live)
+## Part 2: Create Agent Skill (No Extra Docs)
 
-For each step in coding:
+**Goal:** teach the agent once so it stops adding extra documentation.
 
-1. Write or adjust Robot test
-2. Run tests and confirm failure
-3. Implement smallest code change
-4. Re-run tests and confirm pass
-5. Refactor only with tests green
+**Prompt to the agent:**
 
-This is the discipline that makes agentic coding reliable.
+```text
+Create a project skill/instructions file.
+Rule: Robot Framework keywords must be self-documenting.
+Do NOT add docstrings or comments to keywords.
+Store it in the tool's skill location.
+```
 
----
-
-## Discussion: What the Agent Did Well
-
-- Fast cross-file implementation
-- Consistent coding patterns
-- Rapid iteration from feedback
-
-## Discussion: What We Still Reviewed
-
-- Correctness of endpoint contracts
-- Test coverage quality and test readability
-- Edge cases and UX details
+That's it. After this, the agent follows the rule automatically.
 
 ---
 
-## Common Failure Modes
+## Discussion: What Went Well and Where Was the Pain?
 
-- Prompt too broad, scope drifts
-- Tests pass but behavior is wrong
-- UI works locally but API contract is inconsistent
-
-Recovery pattern:
-
-1. Narrow prompt
-2. Ask for small patch
-3. Re-run tests
-4. Repeat
+- What worked smoothly with the agent?
+- Where did it struggle or drift?
+- What surprised you (good or bad)?
+- What would you change next time?
 
 ---
 
 ## Stretch Goals (If Ahead of Time)
 
-- Unlike toggle
-- Prevent duplicate likes per user/session
-- Add optimistic UI with rollback on error
-- Add sorting by likes
+- Unlike support
+- Multiple users and per-user likes
+- UI redesign (e.g., cassette-futuristic theme)
+- Comment on messages
 
 ---
 
