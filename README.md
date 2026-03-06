@@ -44,7 +44,7 @@ Instructor slides are in [INSTRUCTOR-RUNSHEET.md](./INSTRUCTOR-RUNSHEET.md).
 # or
 ./setup-macos.sh
 # or
-./install-windows-nonadmin.ps1
+./setup-windows.ps1
 ```
 
 ### 2) Verify environment

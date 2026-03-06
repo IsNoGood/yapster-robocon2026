@@ -254,6 +254,6 @@ if ($script:ChecksFailed -eq 0) {
     Write-Host 'Please fix the failed checks before starting training.' -ForegroundColor Yellow
     Write-Host 'Run the setup script for your platform if needed:' -ForegroundColor Yellow
     Write-Host '  ./setup-linux.sh (macOS/Linux)' -ForegroundColor Yellow
-    Write-Host '  ./install-windows-nonadmin.ps1 (Windows)' -ForegroundColor Yellow
+    Write-Host '  ./setup-windows.ps1 (Windows)' -ForegroundColor Yellow
     exit 1
 }

@@ -207,7 +207,7 @@ Run one setup script based on OS:
 ```bash
 ./setup-linux.sh
 ./setup-macos.sh
-./install-windows-nonadmin.ps1
+./setup-windows.ps1
 ```
 
 Verify setup by running tests:
