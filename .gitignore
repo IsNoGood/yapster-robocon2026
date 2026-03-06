@@ -87,5 +87,6 @@ runsheet.pdf
 runsheet.pptx
 INSTRUCTOR-RUNSHEET.html
 *.html
+!frontend/index.html
 
 *.pptx
